@@ -7,7 +7,7 @@ export default function Pagina1({navigation}) {
     <View style={styles.container}>
       <Text>Estou na página1!</Text>
       <TouchableOpacity 
-      onPress={()=> navigation.navigate('Pagina2')}>
+      onPress={()=> navigation.navigate('DrawerMenu')}>
         <Text>Navegar Pag2</Text> 
       </TouchableOpacity>
     </View>

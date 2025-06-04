@@ -11,20 +11,33 @@ import Splash from './src/Screens/splash';
 import exemploSkeleton from './src/Screens/exemploSkeleton';
 import CadastroScreen from './src/Screens/CadastroScreen';
 import ListaScreen from './src/Screens/ListaScreen';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
 
 const Stack = createStackNavigator();
+
+const Drawer = createDrawerNavigator();
+
+function DrawerMenu() {
+  return (
+    <Drawer.Navigator initialRouteName="HomeScreen">
+       <Stack.Screen name="CadastroScreen" component={CadastroScreen} />
+        <Stack.Screen name="ListaScreen" component={ListaScreen} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="Pagina2" component={Pagina2} />
+        <Stack.Screen name="exemploSkeleton" component={exemploSkeleton} />       
+       
+    </Drawer.Navigator>
+  );
+}
 
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="exemploSkeleton">
-         <Stack.Screen name="exemploSkeleton" component={exemploSkeleton} options={{headerShown: false }} />
-        <Stack.Screen name="CadastroScreen" component={CadastroScreen} />
-        <Stack.Screen name="ListaScreen" component={ListaScreen} />
-        <Stack.Screen name="Pagina1" component={Pagina1} />
-        <Stack.Screen name="Pagina2" component={Pagina2} />
-        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Piadas' }} />
-        <Stack.Screen name="JokeDetail" component={JokeDetailScreen} options={{ title: 'Detalhe da Piada' }} />
+      <Stack.Navigator initialRouteName="Pagina1">
+        <Stack.Screen name="DrawerMenu" component={DrawerMenu}  options={{headerShown: false }}/>
+         <Stack.Screen name="Pagina1" component={Pagina1} options={{headerShown: false }} />
+          <Stack.Screen name="JokeDetail" component={JokeDetailScreen} options={{ title: 'Detalhe da Piada' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
